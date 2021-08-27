@@ -1,19 +1,22 @@
 import React from "react";
-import Pagination from "./Pagination";
-import Pokemon from "./Pokemon";
+import Pagination from "../Pagination/Pagination";
+import Pokemon from "../Pokemon/Pokemon";
+import { Header, PokedexGrid } from "./Pokedex.styled";
 
 const Pokedex = ({ pokemons, page, setPage, total }) => {
   const backPage = () => {
-    const nexPage = Math.max(page - 1, 0);
-    setPage(nexPage);
+    const backPage = Math.max(page - 1, 0);
+    setPage(backPage);
   };
+
   const nextPage = () => {
-    const nexPage = Math.min(page + 1, total);
-    setPage(nexPage);
+    const nextPage = Math.min(page + 1, total);
+    setPage(nextPage);
   };
+
   return (
     <div>
-      <div className="header">
+      <Header>
         <h1>Pokedex</h1>
         <Pagination
           page={page}
@@ -21,13 +24,13 @@ const Pokedex = ({ pokemons, page, setPage, total }) => {
           onLeftClick={backPage}
           onRightClick={nextPage}
         />
-      </div>
-      <div className="pokedex-grid">
+      </Header>
+      <PokedexGrid>
         {pokemons &&
           pokemons.map((pokemon, index) => (
             <Pokemon pokemon={pokemon} key={index} />
           ))}
-      </div>
+      </PokedexGrid>
     </div>
   );
 };

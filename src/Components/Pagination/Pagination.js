@@ -1,8 +1,9 @@
 import React from "react";
+import { PaginationContainer } from "./Pagination.styled";
 
 const Pagination = ({ onLeftClick, onRightClick, page, totalPages }) => {
   return (
-    <div className="pagination">
+    <PaginationContainer>
       <button onClick={onLeftClick}>
         <div>⬅️</div>
       </button>
@@ -12,7 +13,7 @@ const Pagination = ({ onLeftClick, onRightClick, page, totalPages }) => {
       <button onClick={onRightClick}>
         <div>➡️</div>
       </button>
-    </div>
+    </PaginationContainer>
   );
 };
 export default Pagination;
